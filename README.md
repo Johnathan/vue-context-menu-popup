@@ -23,6 +23,8 @@ export default {
 
 ### context-menu 
 
+eslint-disable prefer-destructuring 
+
 #### props 
 
 - `menu-items` ***Array*** (*optional*) 
