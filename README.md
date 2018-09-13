@@ -1,6 +1,6 @@
 # vue-context-menu-popup
 
-[![GitHub open issues](https://img.shields.io/github/issues/Johnathan Barrett/vue-context-menu-popup.svg?maxAge=2592000)](https://github.com/Johnathan Barrett/vue-context-menu-popup/issues)
+[![GitHub open issues](https://img.shields.io/github/issues/Johnathan/vue-context-menu-popup.svg?maxAge=2592000)](https://github.com/Johnathan/vue-context-menu-popup/issues)
 [![Npm version](https://img.shields.io/npm/v/vue-context-menu-popup.svg?maxAge=2592000)](https://www.npmjs.com/package/vue-context-menu-popup)
 
 ## Usage
