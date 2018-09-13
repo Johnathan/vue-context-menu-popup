@@ -56,35 +56,35 @@ export default {
 
 ## API
 
-### context-menu
+### context-menu 
 
 A simple context menu component
 
 ```html
 <ContextMenu :menu-items="[....]"/>
-```
+``` 
 
-#### props
+#### props 
 
-- `menu-items` ***Array*** (*required*)
+- `menu-items` ***Array*** (*required*) 
 
-#### data
+#### data 
 
-- `visible`
+- `visible` 
 
-**initial value:** `false`
+**initial value:** `false` 
 
-- `contextMenuPosition`
+- `contextMenuPosition` 
 
-**initial value:** `[object Object]`
+**initial value:** `[object Object]` 
 
-#### methods
+#### methods 
 
-- `close()`
+- `close()` 
 
-- `open(position)`
+- `open(position)` 
 
-  Accepts an Object with an `x, y` position or an instance of Event
+  Accepts an Object with an `x, y` position or an instance of Event 
 
 ## Installation
 
