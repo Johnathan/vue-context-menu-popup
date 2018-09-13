@@ -1,4 +1,4 @@
-export const ClickOutside = {
+export default {
   bind(el, binding, vnode) {
     el.clickOutsideEvent = (event) => {
       // here I check that click was outside the el and his childrens

@@ -2,7 +2,11 @@
     <li @click="handleClick(item, $event)" :class="itemClass(item)">
         {{item.label}}
         <ul class="context-menu" v-if="item.children">
-            <context-menu-item v-for="childItem in item.children" :item="childItem"></context-menu-item>
+            <context-menu-item
+                    v-for="(childItem, index) in item.children"
+                    :item="childItem"
+                    :key="index">
+            </context-menu-item>
         </ul>
     </li>
 </template>

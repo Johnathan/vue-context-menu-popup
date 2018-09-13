@@ -1,15 +1,21 @@
 <template>
-  <div class="context-menu context-menu-container" v-if="visible" :style="contextMenuPosition"
-       v-click-outside="close" @click="close">
-    <ul>
-      <context-menu-item v-for="menuItem in menuItems" :item="menuItem"></context-menu-item>
-    </ul>
-  </div>
+    <div class="context-menu context-menu-container" v-if="visible" :style="contextMenuPosition"
+         v-click-outside="close" @click="close">
+        <ul>
+            <context-menu-item
+                    v-for="(menuItem, index) in menuItems"
+                    :item="menuItem"
+                    :key="index">
+            </context-menu-item>
+        </ul>
+    </div>
 </template>
 
 <script>
-import ContextMenuItem from './ContextMenuItem';
-import { ClickOutside } from '../directives/ClickOutside';
+/* eslint-disable prefer-destructuring */
+
+import ContextMenuItem from './ContextMenuItem.vue';
+import ClickOutside from '../directives/ClickOutside';
 
 export default {
   props: {
@@ -39,8 +45,8 @@ export default {
 
       if (typeof position !== 'undefined' && typeof position === 'object') {
         if (position instanceof Event) {
-          x = event.pageX;
-          y = event.pageY;
+          x = position.pageX;
+          y = position.pageY;
         } else {
           x = position.x;
           y = position.y;
@@ -67,62 +73,62 @@ export default {
 </script>
 
 <style lang="scss">
-  // Context Menu Stuff, should probably move this somewhere else.
-  $context-menu-border-radius: 4px;
+    // Context Menu Stuff, should probably move this somewhere else.
+    $context-menu-border-radius: 4px;
 
-  .context-menu-container {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: .8em;
-    position: absolute;
-    user-select: none;
-    z-index: 100;
-  }
+    .context-menu-container {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        font-size: .8em;
+        position: absolute;
+        user-select: none;
+        z-index: 100;
+    }
 
-  .context-menu {
-    background: #e4e4e4;
-    border-radius: $context-menu-border-radius;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-
-      :first-child {
-        border-top-right-radius: $context-menu-border-radius;
-        border-top-left-radius: $context-menu-border-radius;
-      }
-
-      :last-child {
-        border-bottom-right-radius: $context-menu-border-radius;
-        border-bottom-left-radius: $context-menu-border-radius;
-      }
-
-      li {
-        position: relative;
-        padding: .5em 1em;
-        cursor: pointer;
-
-        &.item-disabled {
-          cursor: not-allowed;
-          opacity: 0.3;
-        }
+    .context-menu {
+        background: #e4e4e4;
+        border-radius: $context-menu-border-radius;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
         ul {
-          display: none;
-        }
+            margin: 0;
+            padding: 0;
+            list-style: none;
 
-        &:hover {
-          background: rgba(0, 0, 0, 0.1);
-          > ul {
-            position: absolute;
-            left: calc(100% + 2px);
-            top: 0;
-            display: block;
-            width: 100%;
-          }
+            :first-child {
+                border-top-right-radius: $context-menu-border-radius;
+                border-top-left-radius: $context-menu-border-radius;
+            }
+
+            :last-child {
+                border-bottom-right-radius: $context-menu-border-radius;
+                border-bottom-left-radius: $context-menu-border-radius;
+            }
+
+            li {
+                position: relative;
+                padding: .5em 1em;
+                cursor: pointer;
+
+                &.item-disabled {
+                    cursor: not-allowed;
+                    opacity: 0.3;
+                }
+
+                ul {
+                    display: none;
+                }
+
+                &:hover {
+                    background: rgba(0, 0, 0, 0.1);
+                    > ul {
+                        position: absolute;
+                        left: calc(100% + 2px);
+                        top: 0;
+                        display: block;
+                        width: 100%;
+                    }
+                }
+            }
         }
-      }
     }
-  }
 </style>
