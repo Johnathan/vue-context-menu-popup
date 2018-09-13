@@ -6,13 +6,47 @@
 ## Usage
 
 ```HTML
-<ContextMenu :text="hello"></ContextMenu>
+<ContextMenu ref="contextMenu" :menu-items="menuItems"/>
+
+<div class="context-menu-trigger" 
+	@click.right.prevent="$refs.contextMenu.open($event)">
+    Right Click Me!
+</div>
 ```
 
 ```javascript
-import { ContextMenu } from 'vue-context-menu-popup'
+import ContextMenu from 'vue-context-menu-popup'
 
 export default {
+  data() {
+    return {
+        menuItems: [
+        {
+          label: 'First Menu Item',
+        },
+        {
+          label: 'Disabled Menu Item',
+          disabled: true,
+        },
+        {
+          label: 'I have children',
+          children: [
+            {
+              label: 'Child Item 1',
+            },
+            {
+              label: 'I also have children',
+              children: [
+                {
+                  label: 'Child Item 2',
+                },
+              ],
+            },
+          ],
+        },
+        ]
+    }
+  },
   components: {
     ContextMenu
   }
@@ -23,11 +57,15 @@ export default {
 
 ### context-menu 
 
-eslint-disable prefer-destructuring 
+A simple context menu component
+
+```html
+<ContextMenu :menu-items="[....]"/>
+``` 
 
 #### props 
 
-- `menu-items` ***Array*** (*optional*) 
+- `menu-items` ***Array*** (*required*) 
 
 #### data 
 
@@ -44,6 +82,8 @@ eslint-disable prefer-destructuring
 - `close()` 
 
 - `open(position)` 
+
+  Accepts an Object with an `x, y` position or an instance of Event 
 
 ## Installation
 

@@ -17,10 +17,18 @@
 import ContextMenuItem from './ContextMenuItem.vue';
 import ClickOutside from '../directives/ClickOutside';
 
+/**
+ * A simple context menu component
+ *
+ * ```html
+ * <ContextMenu :menu-items="[....]"/>
+ * ```
+ */
 export default {
   props: {
     menuItems: {
       type: Array,
+      required: true,
     },
   },
 
@@ -39,6 +47,9 @@ export default {
       this.visible = false;
     },
 
+    /**
+     * Accepts an Object with an `x, y` position or an instance of Event
+     */
     open(position) {
       let x = 0;
       let y = 0;

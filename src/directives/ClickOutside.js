@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 export default {
   bind(el, binding, vnode) {
     el.clickOutsideEvent = (event) => {

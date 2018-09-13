@@ -12,44 +12,44 @@
 </template>
 
 <script>
-  import ContextMenu from '@/components/ContextMenu.vue';
+import ContextMenu from '@/components/ContextMenu.vue';
 
-  export default {
-    name: 'app',
-    data() {
-      return {
-        menuItems: [
-          {
-            'label': 'First Menu Item'
-          },
-          {
-            'label': 'Disabled Menu Item',
-            'disabled': true
-          },
-          {
-            'label': 'I have children',
-            'children': [
-              {
-                'label': 'Child Item 1'
-              },
-              {
-                'label': 'I also have children',
-                'children': [
-                  {
-                    'label': 'Child Item 2'
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        consoleMessage: [],
-      };
-    },
-    components: {
-      ContextMenu,
-    },
-  };
+export default {
+  name: 'app',
+  data() {
+    return {
+      menuItems: [
+        {
+          label: 'First Menu Item',
+        },
+        {
+          label: 'Disabled Menu Item',
+          disabled: true,
+        },
+        {
+          label: 'I have children',
+          children: [
+            {
+              label: 'Child Item 1',
+            },
+            {
+              label: 'I also have children',
+              children: [
+                {
+                  label: 'Child Item 2',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      consoleMessage: [],
+    };
+  },
+  components: {
+    ContextMenu,
+  },
+};
 </script>
 
 <style lang="scss">
