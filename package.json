@@ -1,7 +1,13 @@
 {
   "name": "vue-context-menu-popup",
   "description": "Simple context menu component for use in Vue.js applications.",
-  "keywords": "vue, context menu, right click menu, right click",
+  "keywords": [
+    "vue",
+    "component",
+    "context menu",
+    "menu",
+    "right click menu"
+  ],
   "homepage": "https://github.com/Johnathan/vue-context-menu-popup",
   "license": "MIT",
   "author": {
@@ -13,7 +19,7 @@
       "url": "https://github.com/Johnathan/vue-context-menu-popup/issues",
       "email": "johnathan.barrett@gmail.com"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve ./example/main.js --open",
@@ -47,9 +53,5 @@
     "dist/*.map",
     "dist/*.js",
     "src/*"
-  ],
-  "keywords": [
-    "vue",
-    "component"
   ]
 }
