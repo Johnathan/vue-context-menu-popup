@@ -120,6 +120,16 @@ export default {
                 padding: .5em 1em;
                 cursor: pointer;
 
+                .label {
+                    display: flex;
+                    justify-content: space-between;
+                    white-space: nowrap;
+
+                    .item-label {
+                        margin-right: 1em;
+                    }
+                }
+
                 &.item-disabled {
                     cursor: not-allowed;
                     opacity: 0.3;
@@ -136,7 +146,7 @@ export default {
                         left: calc(100% + 2px);
                         top: 0;
                         display: block;
-                        width: 100%;
+                        min-width: 100%;
                     }
                 }
             }

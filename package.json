@@ -19,7 +19,7 @@
       "url": "https://github.com/Johnathan/vue-context-menu-popup/issues",
       "email": "johnathan.barrett@gmail.com"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve ./example/main.js --open",

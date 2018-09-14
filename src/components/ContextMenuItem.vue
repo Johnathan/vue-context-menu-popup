@@ -1,6 +1,9 @@
 <template>
     <li @click="handleClick(item, $event)" :class="itemClass(item)">
-        {{item.label}}
+        <div class="label">
+            <span class="item-label">{{item.label}}</span>
+            <span class="children-indicator" v-if="item.children">▶</span>
+        </div>
         <ul class="context-menu" v-if="item.children">
             <context-menu-item
                     v-for="(childItem, index) in item.children"
