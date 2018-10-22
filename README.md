@@ -78,6 +78,10 @@ A simple context menu component
 
 **initial value:** `[object Object]` 
 
+- `openPosition` 
+
+**initial value:** `'context-menu-open-right'` 
+
 #### methods 
 
 - `close()` 
