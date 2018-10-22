@@ -1,6 +1,11 @@
 <template>
-    <div class="context-menu context-menu-container" v-if="visible" :style="contextMenuPosition"
-         v-click-outside="close" @click="close">
+    <div class="context-menu context-menu-container"
+         :class="openPosition"
+         v-if="visible"
+         :style="contextMenuPosition"
+         v-click-outside="close" @click="close"
+         ref="contextMenu"
+    >
         <ul>
             <context-menu-item
                     v-for="(menuItem, index) in menuItems"
@@ -39,6 +44,7 @@ export default {
         top: 0,
         left: 0,
       },
+      openPosition: 'context-menu-open-right',
     };
   },
 
@@ -51,25 +57,37 @@ export default {
      * Accepts an Object with an `x, y` position or an instance of Event
      */
     open(position) {
-      let x = 0;
-      let y = 0;
-
-      if (typeof position !== 'undefined' && typeof position === 'object') {
-        if (position instanceof Event) {
-          x = position.pageX;
-          y = position.pageY;
-        } else {
-          x = position.x;
-          y = position.y;
-        }
-      }
-
-      this.contextMenuPosition = {
-        left: `${x}px`,
-        top: `${y}px`,
-      };
-
       this.visible = true;
+
+      this.$nextTick(() => {
+        let x = 0;
+        let y = 0;
+
+        if (typeof position !== 'undefined' && typeof position === 'object') {
+          if (position instanceof Event) {
+            const windowWidth = window.innerWidth;
+            const contextMenuWidth = this.$refs.contextMenu.getBoundingClientRect().width;
+
+            if (position.pageX >= (windowWidth - contextMenuWidth)) {
+              this.openPosition = 'context-menu-open-left';
+              x = windowWidth - contextMenuWidth - 10;
+            } else {
+              this.openPosition = 'context-menu-open-right';
+              x = position.pageX;
+            }
+
+            y = position.pageY;
+          } else {
+            x = position.x;
+            y = position.y;
+          }
+        }
+
+        this.contextMenuPosition = {
+          left: `${x}px`,
+          top: `${y}px`,
+        };
+      });
     },
   },
 
@@ -84,7 +102,6 @@ export default {
 </script>
 
 <style lang="scss">
-    // Context Menu Stuff, should probably move this somewhere else.
     $context-menu-border-radius: 4px;
 
     .context-menu-container {
@@ -147,6 +164,19 @@ export default {
                         top: 0;
                         display: block;
                         min-width: 100%;
+                    }
+                }
+            }
+        }
+
+        &.context-menu-open-left {
+            ul {
+                li {
+                    &:hover {
+                        > ul {
+                            left: auto;
+                            right: calc(100% + 2px);
+                        }
                     }
                 }
             }
